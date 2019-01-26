@@ -73,7 +73,11 @@ const graduates = [{"id":1,"first_name":"Cynde","university":"Missouri Southern 
 /* Request 1: Create a new array called universities that contains all the univeristies in the graduates array.  
 
 Once you have the new array created, sort the universities alphabetically and log the result. */
-const universities = graduates.map(grad => grad.university).sort();
+const universities = [];
+for(var i = 0; i < graduates.length; i++) {
+  universities.push(graduates[i].university);
+}
+universities.sort();
 console.log(universities);
 
 /* Request 2: Create a new array called contactInfo that contains both first name and email of each student. 
@@ -82,13 +86,19 @@ The resulting contact information should have a space between the first name and
 Name email@example.com
 
 Log the result of your new array. */
-const contactInfo = graduates.map(grad => `${grad.first_name} ${grad.email}`);
+const contactInfo = [];
+for(var i = 0; i < graduates.length; i++) {
+  contactInfo.push(`${graduates[i].first_name} ${graduates[i].email}`)
+}
 console.log(contactInfo);
 
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called uni that contains them all. Log the result. */
-const uni = graduates.filter(grad => grad.university.includes('Uni'));
-console.log(uni);
+const uni = [];
+for(var i = 0; i < graduates.length; i++) {
+  if (graduates[i].university.includes('Uni')) { uni.push(graduates[i]) }; 
+}
+console.log(`There are ${uni.length} schools that include 'Uni' in their name.`);
 
 
 // ==== ADVANCED Array Methods ====
@@ -141,8 +151,8 @@ console.log(largerPopulation);
 The zoos need to know their total animal population across the United States.  Find the total population from all the zoos using the .reduce() method.
 
 */
-pop = zooAnimals.map(animal => animal.population);
-const populationTotal = pop.reduce((population, total) => total + population, 0);
+// pop = zooAnimals.map(animal => animal.population);
+const populationTotal = zooAnimals.reduce((animal, total) => (total + animal.population), 0);
 console.log(populationTotal);
 
 
